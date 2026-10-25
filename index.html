@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
     <meta name="theme-color" content="#080b16">
     <meta name="description" content="Atefullah Zafar Zoi — web developer and Computer Science student at Kandahar University.">
-    <title>Atefullah Zafar Zoi | Complete Responsive Portfolio</title>
+    <title>Atefullah Zafar Zoi | Full-Stack Developer Portfolio</title>
+    <meta property="og:title" content="Atefullah Zafar Zoi | Developer Portfolio">
+    <meta property="og:description" content="Explore web projects, development skills, and verifiable professional certificates.">
+    <meta name="color-scheme" content="dark">
 
-    <!-- Existing web stack: Tailwind CSS, Font Awesome, Google Fonts, React, Babel and Chart.js -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome, Google Fonts, React, Babel and Chart.js; layout styled with custom CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -297,6 +299,129 @@
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
         }
+
+        /* Premium credentials showcase — independent of existing sections */
+        .certificates-section {position:relative; overflow:hidden; background:radial-gradient(ellipse at 90% 0%,rgba(130,99,255,.13),transparent 48%),radial-gradient(ellipse at 0% 90%,rgba(62,205,230,.08),transparent 42%);}
+        .certificates-intro {max-width:760px;margin-bottom:35px;}
+        .cert-kicker {display:inline-flex;align-items:center;gap:10px;color:#c6b2ff;font-size:11px;font-weight:800;letter-spacing:.2em;margin-bottom:15px;}
+        .cert-title {font-size:clamp(29px,4.3vw,52px);letter-spacing:-.045em;font-weight:850;line-height:1.12;margin-bottom:15px;}
+        .cert-description {color:#9eaec9;max-width:590px;font-size:14px;line-height:1.85;}
+        .cert-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;}
+        .cert-card {position:relative;overflow:hidden;border:1px solid rgba(174,180,255,.18);border-radius:22px;background:linear-gradient(145deg,rgba(32,39,70,.85),rgba(16,23,44,.94));box-shadow:0 18px 55px rgba(0,0,0,.14);transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease;}
+        .cert-card:hover {transform:translateY(-8px);border-color:rgba(140,206,255,.52);box-shadow:0 25px 65px rgba(73,70,154,.19);}
+        .cert-art {height:210px;position:relative;overflow:hidden;padding:15px;background:linear-gradient(130deg,#1b2450,#263361 55%,#17213d);}
+        .cert-art img {width:100%;height:100%;object-fit:contain;border-radius:9px;background:rgba(255,255,255,.06);}
+        .cert-placeholder {height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border:1px dashed rgba(177,190,255,.33);border-radius:12px;color:#c9d8ff;letter-spacing:.13em;text-align:center;font-size:10px;font-weight:800;}
+        .cert-placeholder small {font-size:10px;color:#8293b6;letter-spacing:0;font-weight:500;}
+        .cert-emblem {display:grid;place-items:center;width:62px;height:62px;border-radius:20px;background:linear-gradient(135deg,rgba(135,111,255,.23),rgba(76,211,245,.18));color:#d7c1ff;font-size:27px;margin-bottom:9px;}
+        .cert-index {position:absolute;top:25px;right:25px;padding:5px 9px;border-radius:7px;background:rgba(10,17,35,.75);color:#dce7ff;font-size:11px;font-weight:800;}
+        .cert-body {padding:24px;display:flex;flex-direction:column;align-items:flex-start;min-height:190px;}
+        .cert-meta {width:100%;display:flex;justify-content:space-between;color:#9c8fff;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;}
+        .cert-body h3 {font-size:17px;line-height:1.4;color:#f4f7ff;margin-bottom:6px;}
+        .cert-body p {font-size:12px;color:#a3b2d0;margin-bottom:23px;}
+        .cert-verify,.cert-awaiting {margin-top:auto;font-size:11px;font-weight:800;display:inline-flex;align-items:center;gap:10px;}
+        .cert-verify {padding:11px 14px;border:1px solid rgba(118,220,248,.28);border-radius:10px;color:#9cecff;background:rgba(75,196,233,.08);transition:background .2s ease;}
+        .cert-verify:hover {background:rgba(75,196,233,.17);}
+        .cert-awaiting {color:#8392b3;}
+        .cert-footnote {margin-top:21px;color:#8593b0;font-size:11px;display:flex;gap:9px;align-items:center;}
+        @media(max-width:850px){.cert-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+        @media(max-width:580px){.cert-grid{grid-template-columns:1fr;}.cert-art{height:235px;}.cert-body{min-height:175px;}.cert-title{font-size:32px;}}
+        @media(prefers-reduced-motion:reduce){.cert-card{transition:none;}.cert-card:hover{transform:none;}}
+        /* Real certificates: editorial gallery and accessible image preview */
+        .cert-grid {gap:24px;}
+        .cert-card {isolation:isolate;}
+        .cert-card::before {content:"";position:absolute;inset:0 0 auto;height:2px;background:linear-gradient(90deg,transparent,#ad9aff,#65d6ee,transparent);opacity:.65;z-index:2;}
+        .cert-art {height:224px;padding:18px;background:radial-gradient(circle at 50% 30%,#303b6b,#101a33 78%);}
+        .cert-art img {background:#fff;box-shadow:0 9px 28px rgba(0,0,0,.28);transition:transform .4s ease;}
+        .cert-card:hover .cert-art img {transform:scale(1.035);}
+        .cert-preview {border:0;padding:0;width:100%;height:100%;background:transparent;cursor:zoom-in;display:block;}
+        .cert-preview:focus-visible,.cert-verify:focus-visible,.cert-close:focus-visible {outline:3px solid #82dffc;outline-offset:3px;}
+        .cert-preview-label {position:absolute;bottom:27px;left:27px;display:flex;align-items:center;gap:7px;border-radius:10px;background:rgba(6,12,28,.86);border:1px solid rgba(255,255,255,.16);padding:7px 10px;color:#fff;font-size:11px;font-weight:700;pointer-events:none;}
+        .cert-index {z-index:2;}
+        .cert-count {display:inline-flex;gap:8px;align-items:center;margin-top:20px;padding:9px 14px;border:1px solid rgba(180,164,255,.24);border-radius:99px;color:#d5cbff;background:rgba(132,103,255,.08);font-size:12px;font-weight:700;}
+        .cert-body {min-height:210px;}
+        .cert-body h3 {min-height:48px;}
+        .cert-kind {color:#8192b5;font-size:11px;margin:-12px 0 15px;}
+        .cert-awaiting {padding:10px 0;color:#aebcdb;}
+        .cert-modal {position:fixed;inset:0;z-index:9999;background:rgba(2,5,15,.91);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px;padding:65px 20px 30px;backdrop-filter:blur(15px);}
+        .cert-modal-image {max-width:min(95vw,1280px);max-height:75vh;object-fit:contain;border-radius:8px;box-shadow:0 25px 85px rgba(0,0,0,.55);background:#fff;}
+        .cert-modal-title {font-size:14px;font-weight:700;color:#e8eeff;text-align:center;}
+        .cert-close {position:absolute;right:clamp(16px,4vw,50px);top:20px;background:#192340;color:#fff;border:1px solid #536080;border-radius:12px;padding:10px 15px;cursor:pointer;}
+        @media(max-width:580px){.cert-art{height:225px;}.cert-body h3{min-height:0;}.cert-modal-image{max-width:96vw;max-height:70vh;}}
+
+        /* 2026 portfolio refinement: premium, touch-first and accessible */
+        :root { --radius: 22px; }
+        .site-shell { isolation: isolate; }
+        .section-header { max-width: 760px; margin-inline: auto; }
+        .section-title { text-wrap: balance; }
+        .hero-copy::before { content: ""; position: absolute; z-index: -1; width: 270px; height: 270px; left: -110px; top: -55px; border-radius: 50%; background: rgba(133,100,255,.12); filter: blur(65px); pointer-events: none; }
+        .surface { background: linear-gradient(155deg, rgba(25,36,66,.94),rgba(11,18,36,.91)); }
+        .surface, .cert-card, .project-card { will-change: auto; }
+        .skill-tile { min-height: 46px; }
+        .skill-tile i { font-size: 19px; }
+        .skills-chart-box { height: 445px; }
+        .project-grid { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; }
+        .project-card { border-radius: 21px; }
+        .project-image-wrap { height: auto; aspect-ratio: 16 / 9; }
+        .project-image { width: 100%; height: 100%; object-fit: cover; }
+        .project-art-label { position: absolute; z-index: 2; right: 12px; bottom: 12px; border: 1px solid rgba(205,218,255,.24); border-radius: 100px; padding: 5px 10px; background: rgba(8,13,28,.86); color: #c4d5f4; font-size: 10px; font-weight: 700; letter-spacing: .04em; }
+        .project-content { padding: 19px; }
+        .project-title { font-size: 16px; }
+        .project-desc { font-size: 12px; }
+        .project-tags { margin-top: 17px; }
+        .project-tag { border-radius: 8px; padding: 5px 9px; }
+        .project-filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: -5px 0 30px; }
+        .filter-pill { min-height: 43px; cursor: pointer; color: #bdc9e3; padding: 10px 18px; border: 1px solid rgba(164,180,211,.19); border-radius: 100px; background: rgba(255,255,255,.035); font-weight: 700; font-size: 12px; transition: background .2s, border-color .2s, color .2s; }
+        .filter-pill:hover, .filter-pill:focus-visible { border-color: #89d6ff; color: #fff; }
+        .filter-pill.active { color: #08101c; border-color: transparent; background: linear-gradient(115deg,#ad9cff,#73dffa); }
+        .cert-verify { min-height: 44px; }
+        .cert-card { border-color: rgba(164,180,211,.21); }
+        a:focus-visible, button:focus-visible { outline: 3px solid #86dcff; outline-offset: 3px; }
+        @media(max-width: 1050px) { .project-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+        @media(max-width: 760px) {
+            .hero { gap: 22px; }
+            .skills-chart-box { height: 460px; }
+            .project-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+            .project-content { padding: 15px; }
+            .project-filters { gap: 8px; }
+            .filter-pill { padding: 9px 13px; font-size: 11px; }
+        }
+        @media(max-width: 520px) {
+            .container { width: calc(100% - 28px); }
+            .nav-inner { min-height: 65px; }
+            .hero { padding-top: 33px; }
+            .hero h1 { font-size: clamp(35px,10vw,46px); overflow-wrap: anywhere; }
+            .hero-description { font-size: 14px; }
+            .hero-actions .btn { flex: 1 1 auto; }
+            .skills-chart-box { height: 490px; }
+            .skills-grid, .about-grid, .education-grid, .project-grid, .cert-grid { grid-template-columns: minmax(0,1fr); }
+            .project-image-wrap { aspect-ratio: 16 / 9; }
+            .project-content { padding: 18px; }
+            .project-title { font-size: 16px; }
+            .project-filters { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); }
+            .filter-pill { width: 100%; }
+            .social-links { grid-template-columns: 1fr 1fr; }
+            .social-link { min-width: 0; overflow-wrap: anywhere; }
+            .cert-art { height: auto; aspect-ratio: 16 / 10; }
+            .cert-body { padding: 21px; }
+        }
+        @media(max-width: 360px) { .brand-name { font-size: 12px; } .brand-mark { width: 34px; flex-basis: 34px; } .social-links { grid-template-columns: 1fr; } }
+
+        .ecosystem-panel { display: grid; grid-template-columns: minmax(210px,.7fr) minmax(0,1.3fr); gap: clamp(22px,5vw,64px); align-items: center; margin-top: 22px; padding: clamp(25px,4vw,45px); background: radial-gradient(ellipse at 5% 50%,rgba(117,95,255,.16),transparent 48%),linear-gradient(145deg,#151e37,#0c1529); }
+        .ecosystem-chart { position: relative; width: min(100%,330px); aspect-ratio: 1; margin-inline: auto; }
+        .ecosystem-canvas { width: 100%; height: 100%; }
+        .ecosystem-center { position: absolute; inset: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center; pointer-events: none; text-align: center; }
+        .ecosystem-center strong { font: 800 clamp(30px,4vw,51px)/1 'Space Grotesk',sans-serif; color: #fff; }
+        .ecosystem-center span { color: #a6b8d8; font-size: 12px; }
+        .ecosystem-copy h3 { font: 800 clamp(24px,3vw,38px)/1.22 'Space Grotesk',sans-serif; letter-spacing: -.045em; margin: 4px 0 15px; }
+        .ecosystem-copy p { font-size: 13px; color: #a8b9d7; max-width: 610px; margin: 0 0 22px; }
+        .ecosystem-groups { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+        .ecosystem-groups > div { display: grid; grid-template-columns: 10px minmax(0,1fr); gap: 2px 9px; padding: 13px 14px; background: rgba(255,255,255,.035); border: 1px solid rgba(173,189,228,.1); border-radius: 13px; }
+        .ecosystem-groups i { display: block; width: 9px; height: 9px; border-radius: 50%; margin-top: 7px; }
+        .ecosystem-groups strong { font-size: 12px; color: #eff3ff; }
+        .ecosystem-groups span { grid-column: 2; color: #9eaece; font-size: 11px; overflow-wrap: anywhere; }
+        @media(max-width:760px) { .ecosystem-panel { grid-template-columns: 1fr; } .ecosystem-chart { width: min(100%,260px); } }
+        @media(max-width:460px) { .ecosystem-groups { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -353,10 +478,10 @@
             const chart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['HTML', 'CSS', 'JavaScript', 'React', 'Tailwind', 'Python', 'Java', 'SQL', 'SEO', 'Git'],
+                    labels: ['HTML', 'CSS', 'JavaScript', 'React', 'Bootstrap', 'PHP', 'Laravel', 'Python', 'Java', 'SQL', 'SEO', 'Git'],
                     datasets: [{
-                        label: 'Proficiency',
-                        data: [92, 88, 86, 82, 90, 75, 70, 80, 78, 85],
+                        label: 'Illustrative skill levels',
+                        data: [92, 88, 86, 82, 84, 78, 77, 75, 70, 80, 78, 85],
                         backgroundColor: gradient,
                         borderRadius: 7,
                         borderSkipped: false,
@@ -380,7 +505,7 @@
                             bodyColor: '#c6d1e8',
                             padding: 12,
                             displayColors: false,
-                            callbacks: { label: (context) => ` Proficiency: ${context.parsed.x}%` }
+                            callbacks: { label: (context) => ` Illustrative level: ${context.parsed.x}%` }
                         }
                     },
                     scales: {
@@ -401,7 +526,7 @@
             });
             return () => chart.destroy();
         }, []);
-        return <canvas ref={chartRef} aria-label="Development skills percentage bar chart" role="img"></canvas>;
+        return <canvas ref={chartRef} aria-label="Illustrative development skills bar chart" role="img"></canvas>;
     };
 
     // ---------- Language doughnut chart ----------
@@ -503,27 +628,78 @@
         return <canvas ref={chartRef} aria-label="Academic performance bar and trend chart" role="img"></canvas>;
     };
 
-    // ---------- Projects Data (kept unchanged) ----------
+
+    // ---------- Technology ecosystem: real counts of listed tools, not invented proficiency ----------
+    const StackChart = () => {
+        const chartRef = useRef(null);
+        useEffect(() => {
+            if (!chartRef.current) return;
+            const chart = new Chart(chartRef.current.getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Frontend', 'Backend', 'Data', 'Workflow'],
+                    datasets: [{
+                        data: [5, 4, 1, 3],
+                        backgroundColor: ['#8d85ff', '#62d8f5', '#75e5bb', '#f39bd5'],
+                        borderColor: '#10182f', borderWidth: 6, hoverOffset: 9, borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false, cutout: '73%',
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#18213d', titleColor: '#fff', bodyColor: '#dce6fa',
+                            callbacks: { label: context => ` ${context.parsed} technologies` }
+                        }
+                    }
+                }
+            });
+            return () => chart.destroy();
+        }, []);
+        return <canvas ref={chartRef} role="img" aria-label="Technology categories chart: five frontend, four backend, one data and three workflow tools"></canvas>;
+    };
+
+    // ---------- Project cards ----------
+    // Images are original local concept illustrations, not screenshots of deployed projects.
+    // Update descriptions, tech tags and live/demo links to reflect actual implementations.
     const projects = [
-        { title: "Supermarket Management", desc: "Full inventory & billing", img: "https://images.unsplash.com/photo-1542838132-92c53300491e?w=500&h=300&fit=crop", icon: "fas fa-store", tags: ["React","Node"] },
-        { title: "Bank Management System", desc: "Accounts & transactions", img: "https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?w=500&h=300&fit=crop", icon: "fas fa-university", tags: ["Python","Django"] },
-        { title: "Hospital Management", desc: "Patients & appointments", img: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500&h=300&fit=crop", icon: "fas fa-hospital-user", tags: ["Java","Spring"] },
-        { title: "Fruit Portfolio", desc: "Exotic fruit showcase", img: "https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=500&h=300&fit=crop", icon: "fas fa-apple-alt", tags: ["HTML","CSS"] },
-        { title: "Titanic Analysis", desc: "Data & survival prediction", img: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=500&h=300&fit=crop", icon: "fas fa-chart-line", tags: ["Python","Pandas"] },
-        { title: "HTML/CSS/JS Games", desc: "Tic-Tac-Toe, Snake", img: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=500&h=300&fit=crop", icon: "fas fa-gamepad", tags: ["JS","Canvas"] },
-        { title: "Typing Master", desc: "Speed & accuracy test", img: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b53?w=500&h=300&fit=crop", icon: "fas fa-keyboard", tags: ["React","Tailwind"] },
-        { title: "Online HTML Exam", desc: "Interactive quiz system", img: "https://images.unsplash.com/photo-1434030216411-0b793f4f4173?w=500&h=300&fit=crop", icon: "fas fa-file-alt", tags: ["JS","AJAX"] }
+        { title: "Supermarket Management", desc: "Inventory, billing and retail operations", img: "project-art/supermarket.svg", icon: "fas fa-store", category: "Web Apps", tags: ["React", "Node"] },
+        { title: "Bank Management System", desc: "Account and transaction management", img: "project-art/bank.svg", icon: "fas fa-university", category: "Web Apps", tags: ["Python", "Django"] },
+        { title: "Hospital Management", desc: "Patient records and appointment workflows", img: "project-art/hospital.svg", icon: "fas fa-hospital-user", category: "Web Apps", tags: ["Java", "Spring"] },
+        { title: "Fruit Portfolio", desc: "Colorful responsive product showcase", img: "project-art/fruit.svg", icon: "fas fa-apple-alt", category: "Web Apps", tags: ["HTML", "CSS"] },
+        { title: "Titanic Analysis", desc: "Data exploration and survival prediction", img: "project-art/titanic.svg", icon: "fas fa-chart-line", category: "Data", tags: ["Python", "Pandas"] },
+        { title: "HTML/CSS/JS Games", desc: "Interactive Tic-Tac-Toe and Snake games", img: "project-art/games.svg", icon: "fas fa-gamepad", category: "Tools & Games", tags: ["JavaScript", "Canvas"] },
+        { title: "Typing Master", desc: "Typing speed and accuracy practice", img: "project-art/typing.svg", icon: "fas fa-keyboard", category: "Tools & Games", tags: ["React", "CSS"] },
+        { title: "Online HTML Exam", desc: "Quiz questions and progress tracking", img: "project-art/exam.svg", icon: "fas fa-file-alt", category: "Tools & Games", tags: ["JavaScript", "AJAX"] },
+        { title: "Weather Dashboard", desc: "Responsive weather forecast dashboard", img: "project-art/weather.svg", icon: "fas fa-cloud-sun", category: "Web Apps", tags: ["HTML", "CSS", "JavaScript"] },
+        { title: "Web Academy Platform", desc: "Courses, lessons and learning experience", img: "project-art/academy.svg", icon: "fas fa-graduation-cap", category: "Web Apps", tags: ["Laravel", "PHP", "Bootstrap"] }
+    ];
+
+    // To add verification links later, replace only the empty url: 'https://coursera.org/verify/4TVFGAPIAPUQ' values below.
+    // All images are local files in the certificates/ directory.
+    const certificates = [
+        { title: 'Responsive Website Basics: Code with HTML, CSS, and JavaScript', issuer: 'University of London · Goldsmiths · Coursera', image: 'certificates/university-of-london-responsive-web.jpg', url: 'https://coursera.org/verify/OH6NX5TMDFX1', category: 'Web Development', year: '2026', kind: 'Course Certificate' },
+        { title: 'Web Application Security', issuer: 'Microsoft · Coursera', image: 'certificates/microsoft-web-security.png', url: 'https://coursera.org/verify/0S9FE8QUS9M8', category: 'Cybersecurity', year: '2026', kind: 'Course Certificate' },
+        { title: 'Database Structures and Management with MySQL', issuer: 'Meta · Coursera', image: 'certificates/meta-mysql-database.png', url: 'https://coursera.org/verify/DHN7CE0QUT8N', category: 'Databases', year: '2026', kind: 'Course Certificate' },
+        { title: 'Project Management: Creating the WBS', issuer: 'Coursera Project Network', image: 'certificates/coursera-project-wbs.png', url: 'https://coursera.org/verify/ZZKIV96O1VCG', category: 'Project Management', year: '2026', kind: 'Project Certificate' },
+        { title: 'English for Career Development', issuer: 'University of Pennsylvania · Coursera', image: 'certificates/upenn-career-english.jpg', url: '', category: 'Professional Development', year: '2026', kind: 'Course Certificate' }
     ];
 
     const Portfolio = () => {
         const [menuOpen, setMenuOpen] = useState(false);
-        const links = ['Home', 'About', 'Education', 'Skills', 'Projects', 'Contact'];
+        const [activeCertificate, setActiveCertificate] = useState(null);
+        const [projectFilter, setProjectFilter] = useState('All');
+        const filters = ['All', 'Web Apps', 'Data', 'Tools & Games'];
+        const visibleProjects = projectFilter === 'All' ? projects : projects.filter(p => p.category === projectFilter);
+        const links = ['Home', 'About', 'Education', 'Skills', 'Certificates', 'Projects', 'Contact'];
         const skillIcons = [
             { name: 'HTML5', icon: 'fab fa-html5', color: '#e34c26' }, { name: 'CSS3', icon: 'fab fa-css3-alt', color: '#264de4' },
             { name: 'JavaScript', icon: 'fab fa-js', color: '#f7df1e' }, { name: 'React', icon: 'fab fa-react', color: '#61dafb' },
-            { name: 'Tailwind', icon: 'fas fa-wind', color: '#06b6d4' }, { name: 'Python', icon: 'fab fa-python', color: '#3776ab' },
+            { name: 'Bootstrap', icon: 'fab fa-bootstrap', color: '#a789ff' }, { name: 'PHP', icon: 'fab fa-php', color: '#8996d8' }, { name: 'Laravel', icon: 'fab fa-laravel', color: '#ff5a45' }, { name: 'Python', icon: 'fab fa-python', color: '#3776ab' },
             { name: 'Java', icon: 'fab fa-java', color: '#007396' }, { name: 'SQL', icon: 'fas fa-database', color: '#4479a1' },
-            { name: 'Git', icon: 'fab fa-git-alt', color: '#f05032' }, { name: 'SEO', icon: 'fas fa-chart-line', color: '#ff9800' }
+            { name: 'Git', icon: 'fab fa-git-alt', color: '#f05032' }, { name: 'SEO', icon: 'fas fa-chart-line', color: '#ff9800' },
+            { name: 'GitHub', icon: 'fab fa-github', color: '#e4e9ff' }
         ];
 
         return (
@@ -548,10 +724,10 @@
                 {/* Hero Section */}
                 <header id="home" className="container hero">
                     <div className="hero-copy">
-                        <span className="eyebrow"><span className="eyebrow-dot"></span> Web Lover &amp; Developer</span>
+                        <span className="eyebrow"><span className="eyebrow-dot"></span> Web Developer · Creative Problem Solver</span>
                         <h1>Atefullah <span className="gradient-text">Zafar Zoi</span></h1>
                         <p className="hero-subtitle">Son of Zafar Khan | CS Student @ Kandahar University</p>
-                        <p className="hero-description">React, Tailwind, Python, Java, SQL — building modern full-stack systems.</p>
+                        <p className="hero-description">Building modern web experiences with React, Bootstrap, PHP, Laravel, Python, Java and SQL.</p>
                         <div className="hero-actions">
                             <a href="#contact" className="btn btn-primary"><i className="fas fa-paper-plane"></i> Hire Me</a>
                             <a href="https://github.com/dashboard" className="btn btn-secondary"><i className="fab fa-github"></i> GitHub</a>
@@ -562,8 +738,8 @@
                         <div className="profile-frame">
                             <div className="profile-inner"><img src="darman1.png" alt="Atefullah Zafar Zoi" /></div>
                         </div>
-                        <div className="floating-chip chip-react"><i className="fab fa-react"></i> React</div>
-                        <div className="floating-chip chip-code"><i className="fas fa-code"></i> Full-Stack</div>
+                        <div className="floating-chip chip-react"><i className="fab fa-laravel"></i> Laravel + PHP</div>
+                        <div className="floating-chip chip-code"><i className="fab fa-bootstrap"></i> Bootstrap</div>
                     </div>
                 </header>
 
@@ -581,7 +757,7 @@
                             </div>
                             <div className="surface info-list">
                                 <div className="info-row"><span className="info-icon"><i className="fas fa-language"></i></span><p><strong>Languages:</strong> Pashto 100%, Persian 95%, English 85%</p></div>
-                                <div className="info-row"><span className="info-icon"><i className="fas fa-laptop-code"></i></span><p><strong>Tech:</strong> HTML, CSS, JS, React, Tailwind, Python, Java, SQL, SEO, Git</p></div>
+                                <div className="info-row"><span className="info-icon"><i className="fas fa-laptop-code"></i></span><p><strong>Tech:</strong> HTML, CSS, JavaScript, React, Bootstrap, PHP, Laravel, Python, Java, SQL, SEO, Git &amp; GitHub</p></div>
                                 <div className="info-row"><span className="info-icon"><i className="fas fa-university"></i></span><p><strong>University:</strong> Kandahar University (2023-Present)</p></div>
                             </div>
                         </div>
@@ -630,19 +806,80 @@
                             <div className="surface skills-chart-card">
                                 <div className="chart-card-heading"><h3 className="card-title">Dev Skills Graph</h3><span className="chart-tag">0–100%</span></div>
                                 <div className="skills-chart-box"><SkillsChart /></div>
+                                <p className="chart-note">Visual estimates for presentation only. Edit values in <code>SkillsChart</code> to match your actual experience.</p>
+                            </div>
+                        </div>
+                        <div className="ecosystem-panel surface">
+                            <div className="ecosystem-chart">
+                                <div className="ecosystem-canvas"><StackChart /></div>
+                                <div className="ecosystem-center" aria-hidden="true"><strong>13</strong><span>Tech tools</span></div>
+                            </div>
+                            <div className="ecosystem-copy">
+                                <span className="cert-kicker"><i className="fas fa-layer-group"></i> MODERN DEVELOPMENT STACK</span>
+                                <h3>Built for the <span className="gradient-text">full stack.</span></h3>
+                                <p>A quick view of the technologies featured in this portfolio. The chart counts tools by category rather than claiming measured expertise.</p>
+                                <div className="ecosystem-groups">
+                                    <div><i style={{background:'#8d85ff'}}></i><strong>Frontend</strong><span>HTML · CSS · JavaScript · React · Bootstrap</span></div>
+                                    <div><i style={{background:'#62d8f5'}}></i><strong>Backend</strong><span>PHP · Laravel · Python · Java</span></div>
+                                    <div><i style={{background:'#75e5bb'}}></i><strong>Data</strong><span>SQL</span></div>
+                                    <div><i style={{background:'#f39bd5'}}></i><strong>Workflow</strong><span>Git · GitHub · SEO</span></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
+                {/* International certificates: editable image + verification links */}
+                <section id="certificates" className="section certificates-section">
+                    <div className="container">
+                        <div className="certificates-intro">
+                            <span className="cert-kicker"><i className="fas fa-award"></i> CREDENTIALS & RECOGNITION</span>
+                            <h2 className="cert-title">International <span className="gradient-text">Certifications</span></h2>
+                            <p className="cert-description">A curated gallery for professional achievements, course credentials and independently verifiable certificates.</p>
+                        </div>
+                        <div className="cert-count"><i className="fas fa-layer-group"></i> {certificates.length} Completed Credentials · 2026</div>
+                        <div className="cert-grid" style={{marginTop: '26px'}}>
+                            {certificates.map((c, i) => (
+                                <article className="cert-card" key={c.image}>
+                                    <div className="cert-art">
+                                        <button className="cert-preview" type="button" onClick={() => setActiveCertificate(c)} aria-label={`View full-size certificate: ${c.title}`}>
+                                            <img src={c.image} alt={`${c.title} — ${c.issuer} certificate`} loading="lazy" />
+                                            <span className="cert-preview-label"><i className="fas fa-expand-alt"></i> View certificate</span>
+                                        </button>
+                                        <span className="cert-index">{String(i + 1).padStart(2, '0')} / {String(certificates.length).padStart(2, '0')}</span>
+                                    </div>
+                                    <div className="cert-body">
+                                        <div className="cert-meta"><span><i className="fas fa-award"></i> {c.category}</span><span>{c.year}</span></div>
+                                        <h3>{c.title}</h3><p>{c.issuer}</p>
+                                        <span className="cert-kind">{c.kind}</span>
+                                        {c.url ? <a className="cert-verify" href={c.url} target="_blank" rel="noopener noreferrer">Verify credential <i className="fas fa-external-link-alt"></i></a> : <span className="cert-awaiting"><i className="fas fa-link"></i> Verification link to be added</span>}
+                                    </div>
+                                </article>
+                            ))}
+                        </div>
+                        <p className="cert-footnote"><i className="fas fa-info-circle"></i> Click any certificate to view its original image. Verification buttons use the links printed on the supplied certificates; their current status is determined by Coursera.</p>
+                    </div>
+                </section>
+
+                {activeCertificate && (
+                    <div className="cert-modal" role="dialog" aria-modal="true" aria-label={`Certificate preview: ${activeCertificate.title}`} onClick={() => setActiveCertificate(null)}>
+                        <button type="button" className="cert-close" onClick={() => setActiveCertificate(null)} aria-label="Close certificate preview"><i className="fas fa-times"></i> Close</button>
+                        <img className="cert-modal-image" src={activeCertificate.image} alt={`${activeCertificate.title} full certificate`} onClick={(e) => e.stopPropagation()} />
+                        <p className="cert-modal-title">{activeCertificate.title} · {activeCertificate.issuer}</p>
+                    </div>
+                )}
+
                 {/* Projects Gallery */}
                 <section id="projects" className="section section-muted">
                     <div className="container">
-                        <div className="section-header"><h2 className="section-title">My Real-World Projects</h2><div className="title-rule"></div><p className="projects-subtitle">Supermarket · Bank · Hospital · Fruit · Titanic · Games · Typing Master · Online Exam</p></div>
+                        <div className="section-header"><h2 className="section-title">My Real-World Projects</h2><div className="title-rule"></div><p className="projects-subtitle">Explore 10 projects — including Weather Dashboard and Web Academy Platform.</p></div>
+                        <div className="project-filters" role="group" aria-label="Filter projects by category">
+                            {filters.map(f => <button type="button" key={f} className={`filter-pill ${projectFilter === f ? 'active' : ''}`} aria-pressed={projectFilter === f} onClick={() => setProjectFilter(f)}>{f === 'All' ? 'All projects' : f}</button>)}
+                        </div>
                         <div className="project-grid">
-                            {projects.map((p, idx) => (
-                                <article key={idx} className="project-card">
-                                    <div className="project-image-wrap"><img src={p.img} alt={p.title} className="project-image" loading="lazy" onError={(e) => { e.currentTarget.src = 'https://picsum.photos/id/26/400/250'; }} /></div>
+                            {visibleProjects.map((p) => (
+                                <article key={p.title} className="project-card">
+                                    <div className="project-image-wrap"><img src={p.img} alt={`Illustrated concept preview for ${p.title}`} className="project-image" loading="lazy" /><span className="project-art-label">Concept visual</span></div>
                                     <div className="project-content">
                                         <h3 className="project-title"><i className={p.icon}></i><span>{p.title}</span></h3>
                                         <p className="project-desc">{p.desc}</p>
@@ -665,10 +902,10 @@
                                 <a href="https://wa.me/93731597286" className="social-link whatsapp"><i className="fab fa-whatsapp"></i> WhatsApp</a>
                                 <a href="https://github.com/dashboard" className="social-link"><i className="fab fa-github"></i> GitHub</a>
                                 <a href="https://www.linkedin.com/in/atefullah-zafar-zoy-2a7019399?utm_source=share_via&utm_content=profile&utm_medium=member_android" className="social-link"><i className="fab fa-linkedin"></i> LinkedIn</a>
-                                <a href="atefullahdarman@gmail.com" className="social-link"><i className="fas fa-envelope"></i> atefullahdarman@gmail.com</a>
+                                <a href="mailto:atefullahdarman@gmail.com" className="social-link"><i className="fas fa-envelope"></i> atefullahdarman@gmail.com</a>
                             </div>
                         </div>
-                        <footer className="footer"><div className="footer-rule"></div>2025 © Atefullah Zafar Zoi</footer>
+                        <footer className="footer"><div className="footer-rule"></div>2026 © Atefullah Zafar Zoi</footer>
                     </div>
                 </section>
             </div>
