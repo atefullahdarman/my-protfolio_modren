@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+    <meta name="theme-color" content="#080b16">
+    <meta name="description" content="Atefullah Zafar Zoi — web developer and Computer Science student at Kandahar University.">
+    <title>Atefullah Zafar Zoi | Complete Responsive Portfolio</title>
+
+    <!-- Existing web stack: Tailwind CSS, Font Awesome, Google Fonts, React, Babel and Chart.js -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #080b16;
+            --bg-soft: #0d1223;
+            --panel: rgba(17, 24, 45, .78);
+            --panel-solid: #11182d;
+            --panel-hover: #151f39;
+            --line: rgba(164, 180, 211, .14);
+            --text: #f1f5ff;
+            --muted: #a4aec5;
+            --muted-2: #7f8ba8;
+            --violet: #9b8cff;
+            --blue: #5edbff;
+            --pink: #f58acb;
+            --green: #6ee7b7;
+            --radius: 24px;
+            --shadow: 0 24px 70px rgba(0, 0, 0, .28);
+        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+        body {
+            margin: 0;
+            color: var(--text);
+            background: var(--bg);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse at 12% 8%, rgba(93, 75, 210, .20), transparent 32%),
+                radial-gradient(ellipse at 88% 28%, rgba(26, 174, 210, .12), transparent 30%),
+                radial-gradient(ellipse at 52% 90%, rgba(135, 75, 200, .10), transparent 34%),
+                #080b16;
+        }
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            opacity: .15;
+            background-image: linear-gradient(rgba(160, 177, 220, .08) 1px, transparent 1px), linear-gradient(90deg, rgba(160, 177, 220, .08) 1px, transparent 1px);
+            background-size: 54px 54px;
+            mask-image: linear-gradient(to bottom, black, transparent 80%);
+        }
+        a { color: inherit; text-decoration: none; }
+        button { font: inherit; }
+        img { display: block; max-width: 100%; }
+        ::selection { color: #080b16; background: #8eeaff; }
+        #root { min-height: 100vh; }
+        .container { width: min(1160px, calc(100% - 44px)); margin-inline: auto; }
+        .gradient-text {
+            color: transparent;
+            background: linear-gradient(110deg, #b7a9ff 8%, #74e3ff 52%, #f5a1d5 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(8, 11, 22, .76);
+            border-bottom: 1px solid rgba(164, 180, 211, .11);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+        }
+        .nav-inner { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+        .brand { display: inline-flex; align-items: center; gap: 12px; min-width: 0; font-weight: 800; letter-spacing: -.04em; font-family: 'Space Grotesk', sans-serif; }
+        .brand-mark {
+            display: grid; place-items: center; flex: 0 0 42px; width: 42px; height: 42px;
+            border: 1px solid rgba(255,255,255,.2); border-radius: 14px;
+            background: linear-gradient(140deg, rgba(139, 124, 255, .96), rgba(57, 197, 233, .9));
+            color: #07101d; font-size: 13px; box-shadow: 0 8px 26px rgba(107, 102, 255, .25);
+        }
+        .brand-name { font-size: 17px; white-space: nowrap; }
+        .nav-links { display: flex; align-items: center; gap: clamp(12px, 2vw, 25px); }
+        .nav-links a { color: #aeb8ce; font-size: 13px; font-weight: 600; transition: color .2s ease; }
+        .nav-links a:hover, .nav-links a:focus-visible { color: #8eeaff; }
+        .menu-toggle {
+            display: none; align-items: center; justify-content: center; width: 42px; height: 42px;
+            border: 1px solid var(--line); border-radius: 13px; color: var(--text); background: rgba(255,255,255,.04); cursor: pointer;
+        }
+        .mobile-menu { display: none; padding: 8px 0 18px; border-top: 1px solid var(--line); }
+        .mobile-menu a { display: block; padding: 10px 2px; color: #c0c9dc; font-size: 14px; font-weight: 600; }
+        .mobile-menu a:hover { color: var(--blue); }
+
+        .hero { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr); align-items: center; gap: clamp(34px, 6vw, 76px); padding-block: clamp(64px, 8vw, 106px) 82px; }
+        .hero-copy { position: relative; z-index: 2; }
+        .eyebrow {
+            display: inline-flex; align-items: center; gap: 10px; padding: 8px 13px;
+            color: #c5d4f4; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+            background: rgba(144, 131, 255, .09); border: 1px solid rgba(157, 145, 255, .25); border-radius: 999px;
+        }
+        .eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 14px rgba(110, 231, 183, .8); }
+        .hero h1 { margin: 22px 0 15px; font-family: 'Space Grotesk', sans-serif; font-size: clamp(43px, 6vw, 76px); font-weight: 700; letter-spacing: -.065em; line-height: 1.04; }
+        .hero-subtitle { margin: 0; color: #c5cee1; font-size: clamp(15px, 1.7vw, 19px); font-weight: 500; }
+        .hero-description { max-width: 570px; margin: 20px 0 0; color: var(--muted); font-size: 15px; line-height: 1.9; }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 20px;
+            border: 1px solid transparent; border-radius: 14px; font-size: 13px; font-weight: 700; transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
+        }
+        .btn:hover { transform: translateY(-3px); }
+        .btn-primary { color: #08101c; background: linear-gradient(110deg, #b5a6ff, #7be5f7); box-shadow: 0 12px 32px rgba(99, 147, 255, .22); }
+        .btn-primary:hover { box-shadow: 0 16px 36px rgba(99, 147, 255, .32); }
+        .btn-secondary { color: #e8edfb; border-color: rgba(169, 184, 219, .22); background: rgba(255,255,255,.035); }
+        .btn-secondary:hover { border-color: rgba(142, 234, 255, .5); background: rgba(142,234,255,.06); }
+        .hero-visual { position: relative; display: grid; place-items: center; min-height: 390px; isolation: isolate; }
+        .hero-visual::before { content: ""; position: absolute; width: 76%; aspect-ratio: 1; border-radius: 50%; background: rgba(99, 102, 241, .22); filter: blur(65px); z-index: -1; }
+        .orbit-ring { position: absolute; width: min(100%, 390px); aspect-ratio: 1; border: 1px dashed rgba(144, 164, 215, .27); border-radius: 50%; transform: rotate(-18deg); animation: orbit 55s linear infinite; }
+        .orbit-ring::before, .orbit-ring::after { content: ""; position: absolute; width: 10px; height: 10px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 22px rgba(94,219,255,.8); }
+        .orbit-ring::before { top: 13%; left: 20%; }
+        .orbit-ring::after { right: 12%; bottom: 23%; background: var(--pink); box-shadow: 0 0 22px rgba(245,138,203,.7); }
+        .profile-frame {
+            position: relative; width: clamp(240px, 28vw, 330px); aspect-ratio: 1; padding: 8px; border-radius: 50%;
+            background: conic-gradient(from 30deg, #8c7dff, #68e4f6, #f38bc8, #8c7dff);
+            box-shadow: 0 0 0 12px rgba(138, 125, 255, .045), 0 26px 90px rgba(78, 78, 190, .28);
+        }
+        .profile-inner { width: 100%; height: 100%; padding: 7px; border-radius: 50%; background: #0b1020; overflow: hidden; }
+        .profile-inner img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 1px solid rgba(255,255,255,.15); }
+        .floating-chip { position: absolute; display: flex; align-items: center; gap: 9px; padding: 10px 13px; border: 1px solid rgba(173, 190, 225, .19); border-radius: 14px; color: #dce7fb; background: rgba(15, 22, 42, .86); box-shadow: 0 12px 35px rgba(0,0,0,.22); backdrop-filter: blur(14px); font-size: 12px; font-weight: 700; }
+        .floating-chip i { color: var(--blue); font-size: 16px; }
+        .chip-react { top: 17%; right: -2%; }
+        .chip-code { bottom: 15%; left: -2%; }
+        @keyframes orbit { to { transform: rotate(342deg); } }
+
+        .section { padding-block: 76px; }
+        .section-muted { position: relative; background: linear-gradient(180deg, transparent, rgba(17, 25, 48, .32), transparent); }
+        .section-header { margin-bottom: 34px; text-align: center; }
+        .section-title { margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 3.5vw, 40px); font-weight: 700; letter-spacing: -.045em; line-height: 1.2; }
+        .title-rule { width: 58px; height: 4px; margin: 15px auto 0; border-radius: 20px; background: linear-gradient(90deg, var(--violet), var(--blue)); }
+        .surface {
+            min-width: 0; padding: clamp(20px, 2.5vw, 29px); border: 1px solid var(--line); border-radius: var(--radius);
+            background: linear-gradient(145deg, rgba(21, 29, 53, .92), rgba(13, 19, 37, .86));
+            box-shadow: var(--shadow); backdrop-filter: blur(16px); transition: border-color .25s ease, transform .25s ease;
+        }
+        .surface:hover { border-color: rgba(142, 177, 255, .27); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .about-copy { color: #c0c9dc; font-size: 15px; line-height: 1.95; }
+        .about-copy strong { color: #f4f7ff; font-weight: 700; }
+        .achievement {
+            display: flex; align-items: flex-start; gap: 15px; margin-top: 22px; padding: 17px;
+            border: 1px solid rgba(245, 190, 91, .18); border-radius: 17px; background: linear-gradient(120deg, rgba(245, 190, 91, .09), rgba(245, 138, 203, .035));
+        }
+        .achievement-icon { display: grid; place-items: center; flex: 0 0 42px; width: 42px; height: 42px; border-radius: 13px; color: #f7c86a; background: rgba(245, 190, 91, .12); font-size: 19px; }
+        .achievement p { margin: 0; color: #d8deec; font-size: 13px; }
+        .achievement .achievement-title { margin-bottom: 4px; color: #fff1cb; font-weight: 800; }
+        .info-list { display: grid; gap: 17px; }
+        .info-row { display: grid; grid-template-columns: 42px minmax(0,1fr); align-items: start; gap: 13px; }
+        .info-icon { display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid rgba(142, 234, 255, .16); border-radius: 13px; color: var(--blue); background: rgba(94, 219, 255, .07); font-size: 16px; }
+        .info-row p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.85; overflow-wrap: anywhere; }
+        .info-row strong { display: block; margin-bottom: 2px; color: #f0f4ff; font-size: 14px; }
+
+        .education-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .card-icon { display: grid; place-items: center; width: 49px; height: 49px; margin-bottom: 18px; border: 1px solid rgba(157, 145, 255, .22); border-radius: 16px; color: #b8aaff; background: rgba(139, 124, 255, .10); font-size: 21px; }
+        .card-title { margin: 0; color: #f3f6ff; font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: -.025em; line-height: 1.35; }
+        .card-copy { margin: 10px 0 0; color: var(--muted); font-size: 13px; line-height: 1.85; }
+        .certificate { display: flex; align-items: center; gap: 10px; margin-top: 22px; padding: 13px 15px; border: 1px solid rgba(245, 190, 91, .17); border-radius: 13px; color: #f6d48e; background: rgba(245, 190, 91, .065); font-size: 12px; font-weight: 700; }
+        .chart-card-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+        .chart-card-heading .card-title { font-size: 17px; }
+        .chart-tag { padding: 5px 9px; border: 1px solid rgba(142, 234, 255, .15); border-radius: 999px; color: #9ceafa; background: rgba(94, 219, 255, .06); font-size: 10px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+        .grades-chart-box { height: 280px; width: 100%; }
+        canvas { display: block; max-width: 100%; }
+        .chart-legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; color: #9daac4; font-size: 11px; }
+        .legend-item { display: inline-flex; align-items: center; gap: 7px; }
+        .legend-swatch { display: inline-block; width: 9px; height: 9px; border-radius: 3px; background: linear-gradient(135deg, #a89aff, #65dff8); }
+        .legend-swatch.line { width: 15px; height: 3px; border-radius: 5px; background: #65dff8; }
+
+        .skills-grid { display: grid; grid-template-columns: minmax(0, .92fr) minmax(0, .85fr) minmax(0, 1.35fr); align-items: stretch; gap: 18px; }
+        .skill-tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; margin-top: 17px; }
+        .skill-tile { display: flex; align-items: center; gap: 9px; min-width: 0; padding: 10px 9px; border: 1px solid rgba(164,180,211,.10); border-radius: 12px; background: rgba(255,255,255,.025); transition: background .2s ease, transform .2s ease, border-color .2s ease; }
+        .skill-tile:hover { transform: translateY(-2px); border-color: rgba(142,234,255,.2); background: rgba(142,234,255,.045); }
+        .skill-tile i { flex: 0 0 20px; width: 20px; text-align: center; font-size: 18px; }
+        .skill-tile span { min-width: 0; color: #c9d2e6; font-size: 11px; font-weight: 600; overflow-wrap: anywhere; }
+        .language-chart-box { height: 205px; margin-top: 5px; }
+        .language-list { display: grid; gap: 9px; margin-top: 10px; }
+        .language-item { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 9px 11px; border: 1px solid rgba(164,180,211,.1); border-radius: 11px; color: #c9d2e6; background: rgba(255,255,255,.025); font-size: 11px; }
+        .language-item-name { display: inline-flex; align-items: center; gap: 8px; }
+        .language-dot { width: 8px; height: 8px; border-radius: 50%; }
+        .language-percent { color: #e8edfb; font-weight: 800; font-variant-numeric: tabular-nums; }
+        .skills-chart-box { height: 370px; width: 100%; margin-top: 7px; }
+        .chart-note { margin: 10px 0 0; color: var(--muted-2); font-size: 10px; }
+
+        .projects-subtitle { margin: 15px 0 0; color: var(--muted); font-size: 13px; }
+        .project-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 17px; }
+        .project-card { min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 19px; background: linear-gradient(160deg, rgba(21,29,53,.96), rgba(12,18,35,.96)); box-shadow: 0 15px 40px rgba(0,0,0,.18); transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+        .project-card:hover { transform: translateY(-6px); border-color: rgba(142, 234, 255, .3); box-shadow: 0 22px 48px rgba(0,0,0,.27); }
+        .project-image-wrap { position: relative; height: 165px; overflow: hidden; background: #171f39; }
+        .project-image-wrap::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(8,11,22,.35)); pointer-events: none; }
+        .project-image { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+        .project-card:hover .project-image { transform: scale(1.07); }
+        .project-content { padding: 16px; }
+        .project-title { display: flex; align-items: flex-start; gap: 9px; margin: 0; color: #f2f5ff; font-size: 14px; font-weight: 800; line-height: 1.45; }
+        .project-title i { flex: 0 0 auto; margin-top: 3px; color: #a99aff; }
+        .project-desc { min-height: 38px; margin: 8px 0 0; color: var(--muted); font-size: 12px; line-height: 1.65; }
+        .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 13px; }
+        .project-tag { padding: 4px 8px; border: 1px solid rgba(164,180,211,.12); border-radius: 7px; color: #b8c5dd; background: rgba(255,255,255,.035); font-size: 10px; font-weight: 600; }
+
+        .contact-section { padding-block: 66px 30px; }
+        .contact-shell { position: relative; overflow: hidden; padding: clamp(28px, 5vw, 54px); border: 1px solid rgba(151, 144, 255, .2); border-radius: 28px; text-align: center; background: radial-gradient(ellipse at 15% 0%, rgba(126, 105, 255, .16), transparent 45%), radial-gradient(ellipse at 90% 100%, rgba(56, 199, 225, .11), transparent 42%), linear-gradient(135deg, #121a32, #0d1326); box-shadow: var(--shadow); }
+        .contact-shell::before { content: ""; position: absolute; top: -110px; right: -90px; width: 240px; height: 240px; border: 1px solid rgba(142,234,255,.1); border-radius: 50%; box-shadow: 0 0 0 28px rgba(142,234,255,.025), 0 0 0 56px rgba(142,234,255,.018); pointer-events: none; }
+        .contact-shell .section-title { position: relative; }
+        .contact-copy { position: relative; margin: 13px 0 27px; color: var(--muted); font-size: 14px; }
+        .social-links { position: relative; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+        .social-link { display: inline-flex; align-items: center; gap: 9px; padding: 11px 14px; border: 1px solid rgba(164,180,211,.16); border-radius: 12px; color: #dbe4f7; background: rgba(255,255,255,.035); font-size: 12px; font-weight: 700; transition: transform .2s ease, background .2s ease, border-color .2s ease; }
+        .social-link i { font-size: 16px; color: #a99aff; }
+        .social-link:hover { transform: translateY(-3px); border-color: rgba(142,234,255,.3); background: rgba(142,234,255,.06); }
+        .social-link.whatsapp i { color: #6ee7b7; }
+        .footer { padding: 25px 0 5px; color: #75819d; text-align: center; font-size: 11px; }
+        .footer-rule { width: 100%; height: 1px; margin-bottom: 20px; background: linear-gradient(90deg, transparent, rgba(164,180,211,.16), transparent); }
+
+        @media (max-width: 1050px) {
+            .nav-links { gap: 13px; }
+            .nav-links a { font-size: 12px; }
+            .skills-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+            .skills-chart-card { grid-column: 1 / -1; }
+            .skills-chart-box { height: 350px; }
+            .project-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+        }
+        @media (max-width: 760px) {
+            .container { width: min(100% - 32px, 600px); }
+            .nav-inner { min-height: 68px; }
+            .brand-mark { width: 38px; height: 38px; flex-basis: 38px; border-radius: 12px; }
+            .brand-name { font-size: 15px; }
+            .nav-links { display: none; }
+            .menu-toggle { display: inline-flex; }
+            .mobile-menu { display: block; }
+            .hero { grid-template-columns: 1fr; gap: 26px; padding-block: 56px 58px; text-align: center; }
+            .hero-copy { order: 1; }
+            .hero-visual { order: 0; min-height: 290px; }
+            .profile-frame { width: clamp(215px, 55vw, 280px); }
+            .orbit-ring { width: min(88%, 320px); }
+            .chip-react { right: 0; top: 12%; }
+            .chip-code { left: 0; bottom: 8%; }
+            .hero h1 { font-size: clamp(42px, 10vw, 62px); }
+            .hero-description { margin-inline: auto; }
+            .hero-actions { justify-content: center; }
+            .section { padding-block: 58px; }
+            .about-grid, .education-grid { grid-template-columns: 1fr; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .skills-chart-card { grid-column: auto; }
+            .skills-chart-box { height: 380px; }
+            .project-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 13px; }
+            .project-image-wrap { height: 145px; }
+            .project-content { padding: 13px; }
+            .project-title { font-size: 13px; }
+            .contact-section { padding-top: 48px; }
+        }
+        @media (max-width: 460px) {
+            .container { width: calc(100% - 26px); }
+            .brand-name { font-size: 13px; }
+            .brand { gap: 8px; }
+            .hero { padding-top: 40px; }
+            .hero-visual { min-height: 260px; }
+            .profile-frame { width: 210px; }
+            .floating-chip { padding: 8px 10px; font-size: 10px; }
+            .chip-react { right: -3px; }
+            .chip-code { left: -3px; }
+            .hero h1 { font-size: 40px; }
+            .hero-subtitle { font-size: 14px; }
+            .hero-description { font-size: 13px; }
+            .btn { min-height: 44px; padding-inline: 15px; font-size: 12px; }
+            .surface { padding: 18px; border-radius: 20px; }
+            .section-title { font-size: 29px; }
+            .skill-tiles { gap: 7px; }
+            .skill-tile { padding: 9px 7px; gap: 7px; }
+            .skill-tile span { font-size: 10px; }
+            .skills-chart-box { height: 365px; }
+            .project-grid { grid-template-columns: 1fr; }
+            .project-image-wrap { height: 185px; }
+            .project-desc { min-height: auto; }
+            .social-links { display: grid; grid-template-columns: 1fr 1fr; }
+            .social-link { justify-content: center; padding-inline: 8px; font-size: 11px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+        }
+    </style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.development.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+    const { useState, useEffect, useRef } = React;
+
+    const chartTextColor = '#a4aec5';
+    const chartGridColor = 'rgba(164, 180, 211, 0.13)';
+
+    // Draw clear percentage labels directly on bar charts without adding another library.
+    const valueLabelsPlugin = {
+        id: 'portfolioValueLabels',
+        afterDatasetsDraw(chart) {
+            const { ctx } = chart;
+            ctx.save();
+            chart.data.datasets.forEach((dataset, datasetIndex) => {
+                const meta = chart.getDatasetMeta(datasetIndex);
+                if (meta.type !== 'bar' || meta.hidden) return;
+                meta.data.forEach((bar, index) => {
+                    const value = dataset.data[index];
+                    const point = bar.getProps(['x', 'y'], true);
+                    ctx.fillStyle = '#e6edff';
+                    ctx.font = '600 11px Inter, sans-serif';
+                    ctx.textBaseline = 'middle';
+                    if (chart.options.indexAxis === 'y') {
+                        ctx.textAlign = 'left';
+                        ctx.fillText(`${value}%`, point.x + 8, point.y);
+                    } else {
+                        ctx.textAlign = 'center';
+                        ctx.fillText(`${value}%`, point.x, point.y - 12);
+                    }
+                });
+            });
+            ctx.restore();
+        }
+    };
+
+    // ---------- Skills bar chart ----------
+    const SkillsChart = () => {
+        const chartRef = useRef(null);
+        useEffect(() => {
+            if (!chartRef.current) return;
+            const ctx = chartRef.current.getContext('2d');
+            const gradient = ctx.createLinearGradient(0, 0, 560, 0);
+            gradient.addColorStop(0, '#8e7bff');
+            gradient.addColorStop(.55, '#6c9bff');
+            gradient.addColorStop(1, '#61e0f5');
+            const chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['HTML', 'CSS', 'JavaScript', 'React', 'Tailwind', 'Python', 'Java', 'SQL', 'SEO', 'Git'],
+                    datasets: [{
+                        label: 'Proficiency',
+                        data: [92, 88, 86, 82, 90, 75, 70, 80, 78, 85],
+                        backgroundColor: gradient,
+                        borderRadius: 7,
+                        borderSkipped: false,
+                        barThickness: 13,
+                        maxBarThickness: 15
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: { duration: 850, easing: 'easeOutQuart' },
+                    layout: { padding: { top: 3, right: 25, bottom: 2 } },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#171f38',
+                            borderColor: 'rgba(142,234,255,.25)',
+                            borderWidth: 1,
+                            titleColor: '#f3f6ff',
+                            bodyColor: '#c6d1e8',
+                            padding: 12,
+                            displayColors: false,
+                            callbacks: { label: (context) => ` Proficiency: ${context.parsed.x}%` }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            min: 0, max: 110,
+                            grid: { color: chartGridColor, drawBorder: false },
+                            border: { display: false },
+                            ticks: { stepSize: 20, color: chartTextColor, font: { family: 'Inter', size: 10 }, callback: (value) => value <= 100 ? `${value}%` : '' }
+                        },
+                        y: {
+                            grid: { display: false },
+                            border: { display: false },
+                            ticks: { color: '#c8d2e7', padding: 8, font: { family: 'Inter', size: 11, weight: '500' } }
+                        }
+                    }
+                },
+                plugins: [valueLabelsPlugin]
+            });
+            return () => chart.destroy();
+        }, []);
+        return <canvas ref={chartRef} aria-label="Development skills percentage bar chart" role="img"></canvas>;
+    };
+
+    // ---------- Language doughnut chart ----------
+    const LanguageChart = () => {
+        const chartRef = useRef(null);
+        useEffect(() => {
+            if (!chartRef.current) return;
+            const chart = new Chart(chartRef.current.getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Pashto', 'Persian', 'English'],
+                    datasets: [{
+                        data: [100, 95, 85],
+                        backgroundColor: ['#8f7cff', '#61dff5', '#f58acb'],
+                        hoverBackgroundColor: ['#a99bff', '#91ecff', '#ffacd9'],
+                        borderWidth: 0,
+                        borderRadius: 5,
+                        spacing: 4,
+                        hoverOffset: 7
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '76%',
+                    animation: { animateRotate: true, duration: 900 },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#171f38',
+                            borderColor: 'rgba(142,234,255,.25)',
+                            borderWidth: 1,
+                            titleColor: '#f3f6ff',
+                            bodyColor: '#c6d1e8',
+                            padding: 11,
+                            callbacks: { label: (context) => ` ${context.label}: ${context.raw}%` }
+                        }
+                    }
+                }
+            });
+            return () => chart.destroy();
+        }, []);
+        return <canvas ref={chartRef} aria-label="Language proficiency doughnut chart" role="img"></canvas>;
+    };
+
+    // ---------- Academic grades chart ----------
+    const GradesChart = () => {
+        const chartRef = useRef(null);
+        useEffect(() => {
+            if (!chartRef.current) return;
+            const ctx = chartRef.current.getContext('2d');
+            const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+            gradient.addColorStop(0, 'rgba(155, 140, 255, .95)');
+            gradient.addColorStop(1, 'rgba(82, 194, 238, .35)');
+            const chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['10th', '11th', '12th'],
+                    datasets: [
+                        { type: 'bar', label: 'Grades', data: [96, 98, 99], backgroundColor: gradient, borderRadius: 9, borderSkipped: false, barPercentage: .43, categoryPercentage: .68, order: 2 },
+                        { type: 'line', label: 'Trend', data: [96, 98, 99], borderColor: '#61dff5', backgroundColor: '#61dff5', borderWidth: 3, fill: false, tension: .35, pointRadius: 5, pointHoverRadius: 7, pointBackgroundColor: '#d8faff', pointBorderColor: '#61dff5', pointBorderWidth: 2, order: 1 }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: { duration: 850, easing: 'easeOutQuart' },
+                    layout: { padding: { top: 18, right: 8, left: 4 } },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#171f38',
+                            borderColor: 'rgba(142,234,255,.25)',
+                            borderWidth: 1,
+                            titleColor: '#f3f6ff',
+                            bodyColor: '#c6d1e8',
+                            padding: 12,
+                            callbacks: { label: (context) => ` ${context.dataset.label}: ${context.parsed.y}%` }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            min: 85, max: 100,
+                            grid: { color: chartGridColor, drawBorder: false },
+                            border: { display: false },
+                            ticks: { stepSize: 5, color: chartTextColor, font: { family: 'Inter', size: 10 }, callback: (value) => `${value}%` }
+                        },
+                        x: {
+                            grid: { display: false },
+                            border: { display: false },
+                            ticks: { color: '#c8d2e7', font: { family: 'Inter', size: 11, weight: '600' } }
+                        }
+                    }
+                },
+                plugins: [valueLabelsPlugin]
+            });
+            return () => chart.destroy();
+        }, []);
+        return <canvas ref={chartRef} aria-label="Academic performance bar and trend chart" role="img"></canvas>;
+    };
+
+    // ---------- Projects Data (kept unchanged) ----------
+    const projects = [
+        { title: "Supermarket Management", desc: "Full inventory & billing", img: "https://images.unsplash.com/photo-1542838132-92c53300491e?w=500&h=300&fit=crop", icon: "fas fa-store", tags: ["React","Node"] },
+        { title: "Bank Management System", desc: "Accounts & transactions", img: "https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?w=500&h=300&fit=crop", icon: "fas fa-university", tags: ["Python","Django"] },
+        { title: "Hospital Management", desc: "Patients & appointments", img: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500&h=300&fit=crop", icon: "fas fa-hospital-user", tags: ["Java","Spring"] },
+        { title: "Fruit Portfolio", desc: "Exotic fruit showcase", img: "https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=500&h=300&fit=crop", icon: "fas fa-apple-alt", tags: ["HTML","CSS"] },
+        { title: "Titanic Analysis", desc: "Data & survival prediction", img: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=500&h=300&fit=crop", icon: "fas fa-chart-line", tags: ["Python","Pandas"] },
+        { title: "HTML/CSS/JS Games", desc: "Tic-Tac-Toe, Snake", img: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=500&h=300&fit=crop", icon: "fas fa-gamepad", tags: ["JS","Canvas"] },
+        { title: "Typing Master", desc: "Speed & accuracy test", img: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b53?w=500&h=300&fit=crop", icon: "fas fa-keyboard", tags: ["React","Tailwind"] },
+        { title: "Online HTML Exam", desc: "Interactive quiz system", img: "https://images.unsplash.com/photo-1434030216411-0b793f4f4173?w=500&h=300&fit=crop", icon: "fas fa-file-alt", tags: ["JS","AJAX"] }
+    ];
+
+    const Portfolio = () => {
+        const [menuOpen, setMenuOpen] = useState(false);
+        const links = ['Home', 'About', 'Education', 'Skills', 'Projects', 'Contact'];
+        const skillIcons = [
+            { name: 'HTML5', icon: 'fab fa-html5', color: '#e34c26' }, { name: 'CSS3', icon: 'fab fa-css3-alt', color: '#264de4' },
+            { name: 'JavaScript', icon: 'fab fa-js', color: '#f7df1e' }, { name: 'React', icon: 'fab fa-react', color: '#61dafb' },
+            { name: 'Tailwind', icon: 'fas fa-wind', color: '#06b6d4' }, { name: 'Python', icon: 'fab fa-python', color: '#3776ab' },
+            { name: 'Java', icon: 'fab fa-java', color: '#007396' }, { name: 'SQL', icon: 'fas fa-database', color: '#4479a1' },
+            { name: 'Git', icon: 'fab fa-git-alt', color: '#f05032' }, { name: 'SEO', icon: 'fas fa-chart-line', color: '#ff9800' }
+        ];
+
+        return (
+            <div className="site-shell">
+                {/* Navigation */}
+                <nav className="navbar">
+                    <div className="container nav-inner">
+                        <a href="#home" className="brand" aria-label="Atefullah Zafar Zoi home">
+                            <span className="brand-mark">AZ</span>
+                            <span className="brand-name"><span className="gradient-text">Atefullah</span> Zafar Zoi</span>
+                        </a>
+                        <div className="nav-links">
+                            {links.map(l => <a key={l} href={`#${l.toLowerCase()}`}>{l}</a>)}
+                        </div>
+                        <button className="menu-toggle" aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
+                            <i className={`fas ${menuOpen ? 'fa-times' : 'fa-bars'}`}></i>
+                        </button>
+                    </div>
+                    {menuOpen && <div className="container mobile-menu">{links.map(l => <a key={l} href={`#${l.toLowerCase()}`} onClick={() => setMenuOpen(false)}>{l}</a>)}</div>}
+                </nav>
+
+                {/* Hero Section */}
+                <header id="home" className="container hero">
+                    <div className="hero-copy">
+                        <span className="eyebrow"><span className="eyebrow-dot"></span> Web Lover &amp; Developer</span>
+                        <h1>Atefullah <span className="gradient-text">Zafar Zoi</span></h1>
+                        <p className="hero-subtitle">Son of Zafar Khan | CS Student @ Kandahar University</p>
+                        <p className="hero-description">React, Tailwind, Python, Java, SQL — building modern full-stack systems.</p>
+                        <div className="hero-actions">
+                            <a href="#contact" className="btn btn-primary"><i className="fas fa-paper-plane"></i> Hire Me</a>
+                            <a href="https://github.com/dashboard" className="btn btn-secondary"><i className="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                    <div className="hero-visual" aria-label="Profile image">
+                        <div className="orbit-ring"></div>
+                        <div className="profile-frame">
+                            <div className="profile-inner"><img src="darman1.png" alt="Atefullah Zafar Zoi" /></div>
+                        </div>
+                        <div className="floating-chip chip-react"><i className="fab fa-react"></i> React</div>
+                        <div className="floating-chip chip-code"><i className="fas fa-code"></i> Full-Stack</div>
+                    </div>
+                </header>
+
+                {/* About */}
+                <section id="about" className="section">
+                    <div className="container">
+                        <div className="section-header"><h2 className="section-title">About Me</h2><div className="title-rule"></div></div>
+                        <div className="about-grid">
+                            <div className="surface">
+                                <p className="about-copy">I'm Atefullah, a passionate web developer and CS student at <strong>Kandahar University</strong>. I passed Kankor exam and joined CS faculty with excellence.</p>
+                                <div className="achievement">
+                                    <div className="achievement-icon"><i className="fas fa-trophy"></i></div>
+                                    <div><p className="achievement-title">🎓 2nd Rank at Nooralmadaris High School (1402)</p><p>10th:96% | 11th:98% | 12th:99%</p></div>
+                                </div>
+                            </div>
+                            <div className="surface info-list">
+                                <div className="info-row"><span className="info-icon"><i className="fas fa-language"></i></span><p><strong>Languages:</strong> Pashto 100%, Persian 95%, English 85%</p></div>
+                                <div className="info-row"><span className="info-icon"><i className="fas fa-laptop-code"></i></span><p><strong>Tech:</strong> HTML, CSS, JS, React, Tailwind, Python, Java, SQL, SEO, Git</p></div>
+                                <div className="info-row"><span className="info-icon"><i className="fas fa-university"></i></span><p><strong>University:</strong> Kandahar University (2023-Present)</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Education + Grades */}
+                <section id="education" className="section section-muted">
+                    <div className="container">
+                        <div className="section-header"><h2 className="section-title">Education &amp; Grades</h2><div className="title-rule"></div></div>
+                        <div className="education-grid">
+                            <div className="surface">
+                                <div className="card-icon"><i className="fas fa-school"></i></div>
+                                <h3 className="card-title">Nooralmadaris High School</h3>
+                                <p className="card-copy">Graduated 1402 (2023) with second rank</p>
+                                <p className="card-copy">10th:96% | 11th:98% | 12th:99%</p>
+                                <div className="certificate"><i className="fas fa-certificate"></i> Certificate of Excellence</div>
+                            </div>
+                            <div className="surface">
+                                <div className="chart-card-heading"><h3 className="card-title">Academic Performance</h3><span className="chart-tag">Grades</span></div>
+                                <div className="grades-chart-box"><GradesChart /></div>
+                                <div className="chart-legend"><span className="legend-item"><i className="legend-swatch"></i> Grades</span><span className="legend-item"><i className="legend-swatch line"></i> Trend</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Skills + Charts */}
+                <section id="skills" className="section">
+                    <div className="container">
+                        <div className="section-header"><h2 className="section-title">Technical Skills &amp; Charts</h2><div className="title-rule"></div></div>
+                        <div className="skills-grid">
+                            <div className="surface">
+                                <div className="chart-card-heading"><h3 className="card-title"><i className="fab fa-react" style={{color:'#8f7cff', marginRight:8}}></i>Core Stack</h3></div>
+                                <div className="skill-tiles">{skillIcons.map(s => <div key={s.name} className="skill-tile"><i className={s.icon} style={{color:s.color}}></i><span>{s.name}</span></div>)}</div>
+                            </div>
+                            <div className="surface">
+                                <div className="chart-card-heading"><h3 className="card-title">Languages</h3><span className="chart-tag">Proficiency</span></div>
+                                <div className="language-chart-box"><LanguageChart /></div>
+                                <div className="language-list">
+                                    <div className="language-item"><span className="language-item-name"><i className="language-dot" style={{background:'#8f7cff'}}></i>Pashto</span><span className="language-percent">100%</span></div>
+                                    <div className="language-item"><span className="language-item-name"><i className="language-dot" style={{background:'#61dff5'}}></i>Persian</span><span className="language-percent">95%</span></div>
+                                    <div className="language-item"><span className="language-item-name"><i className="language-dot" style={{background:'#f58acb'}}></i>English</span><span className="language-percent">85%</span></div>
+                                </div>
+                            </div>
+                            <div className="surface skills-chart-card">
+                                <div className="chart-card-heading"><h3 className="card-title">Dev Skills Graph</h3><span className="chart-tag">0–100%</span></div>
+                                <div className="skills-chart-box"><SkillsChart /></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Projects Gallery */}
+                <section id="projects" className="section section-muted">
+                    <div className="container">
+                        <div className="section-header"><h2 className="section-title">My Real-World Projects</h2><div className="title-rule"></div><p className="projects-subtitle">Supermarket · Bank · Hospital · Fruit · Titanic · Games · Typing Master · Online Exam</p></div>
+                        <div className="project-grid">
+                            {projects.map((p, idx) => (
+                                <article key={idx} className="project-card">
+                                    <div className="project-image-wrap"><img src={p.img} alt={p.title} className="project-image" loading="lazy" onError={(e) => { e.currentTarget.src = 'https://picsum.photos/id/26/400/250'; }} /></div>
+                                    <div className="project-content">
+                                        <h3 className="project-title"><i className={p.icon}></i><span>{p.title}</span></h3>
+                                        <p className="project-desc">{p.desc}</p>
+                                        <div className="project-tags">{p.tags.map(t => <span key={t} className="project-tag">{t}</span>)}</div>
+                                    </div>
+                                </article>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* Contact + Social */}
+                <section id="contact" className="contact-section">
+                    <div className="container">
+                        <div className="contact-shell">
+                            <h2 className="section-title">Let's Connect</h2>
+                            <div className="title-rule"></div>
+                            <p className="contact-copy">Available for freelance &amp; collaborations.</p>
+                            <div className="social-links">
+                                <a href="https://wa.me/93731597286" className="social-link whatsapp"><i className="fab fa-whatsapp"></i> WhatsApp</a>
+                                <a href="https://github.com/dashboard" className="social-link"><i className="fab fa-github"></i> GitHub</a>
+                                <a href="https://www.linkedin.com/in/atefullah-zafar-zoy-2a7019399?utm_source=share_via&utm_content=profile&utm_medium=member_android" className="social-link"><i className="fab fa-linkedin"></i> LinkedIn</a>
+                                <a href="atefullahdarman@gmail.com" className="social-link"><i className="fas fa-envelope"></i> atefullahdarman@gmail.com</a>
+                            </div>
+                        </div>
+                        <footer className="footer"><div className="footer-rule"></div>2025 © Atefullah Zafar Zoi</footer>
+                    </div>
+                </section>
+            </div>
+        );
+    };
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<Portfolio />);
+</script>
+</body>
+</html>
