@@ -664,26 +664,26 @@
     // Images are original local concept illustrations, not screenshots of deployed projects.
     // Update descriptions, tech tags and live/demo links to reflect actual implementations.
     const projects = [
-        { title: "Supermarket Management", desc: "Inventory, billing and retail operations", img: "project-art/supermarket.svg", icon: "fas fa-store", category: "Web Apps", tags: ["React", "Node"] },
-        { title: "Bank Management System", desc: "Account and transaction management", img: "project-art/bank.svg", icon: "fas fa-university", category: "Web Apps", tags: ["Python", "Django"] },
-        { title: "Hospital Management", desc: "Patient records and appointment workflows", img: "project-art/hospital.svg", icon: "fas fa-hospital-user", category: "Web Apps", tags: ["Java", "Spring"] },
-        { title: "Fruit Portfolio", desc: "Colorful responsive product showcase", img: "project-art/fruit.svg", icon: "fas fa-apple-alt", category: "Web Apps", tags: ["HTML", "CSS"] },
-        { title: "Titanic Analysis", desc: "Data exploration and survival prediction", img: "project-art/titanic.svg", icon: "fas fa-chart-line", category: "Data", tags: ["Python", "Pandas"] },
-        { title: "HTML/CSS/JS Games", desc: "Interactive Tic-Tac-Toe and Snake games", img: "project-art/games.svg", icon: "fas fa-gamepad", category: "Tools & Games", tags: ["JavaScript", "Canvas"] },
-        { title: "Typing Master", desc: "Typing speed and accuracy practice", img: "project-art/typing.svg", icon: "fas fa-keyboard", category: "Tools & Games", tags: ["React", "CSS"] },
-        { title: "Online HTML Exam", desc: "Quiz questions and progress tracking", img: "project-art/exam.svg", icon: "fas fa-file-alt", category: "Tools & Games", tags: ["JavaScript", "AJAX"] },
-        { title: "Weather Dashboard", desc: "Responsive weather forecast dashboard", img: "project-art/weather.svg", icon: "fas fa-cloud-sun", category: "Web Apps", tags: ["HTML", "CSS", "JavaScript"] },
-        { title: "Web Academy Platform", desc: "Courses, lessons and learning experience", img: "project-art/academy.svg", icon: "fas fa-graduation-cap", category: "Web Apps", tags: ["Laravel", "PHP", "Bootstrap"] }
+        { title: "Supermarket Management", desc: "Inventory, billing and retail operations", img: "supermarket.svg", icon: "fas fa-store", category: "Web Apps", tags: ["React", "Node"] },
+        { title: "Bank Management System", desc: "Account and transaction management", img: "bank.svg", icon: "fas fa-university", category: "Web Apps", tags: ["Python", "Django"] },
+        { title: "Hospital Management", desc: "Patient records and appointment workflows", img: "hospital.svg", icon: "fas fa-hospital-user", category: "Web Apps", tags: ["Java", "Spring"] },
+        { title: "Fruit Portfolio", desc: "Colorful responsive product showcase", img: "fruit.svg", icon: "fas fa-apple-alt", category: "Web Apps", tags: ["HTML", "CSS"] },
+        { title: "Titanic Analysis", desc: "Data exploration and survival prediction", img: "titanic.svg", icon: "fas fa-chart-line", category: "Data", tags: ["Python", "Pandas"] },
+        { title: "HTML/CSS/JS Games", desc: "Interactive Tic-Tac-Toe and Snake games", img: "games.svg", icon: "fas fa-gamepad", category: "Tools & Games", tags: ["JavaScript", "Canvas"] },
+        { title: "Typing Master", desc: "Typing speed and accuracy practice", img: "typing.svg", icon: "fas fa-keyboard", category: "Tools & Games", tags: ["React", "CSS"] },
+        { title: "Online HTML Exam", desc: "Quiz questions and progress tracking", img: "exam.svg", icon: "fas fa-file-alt", category: "Tools & Games", tags: ["JavaScript", "AJAX"] },
+        { title: "Weather Dashboard", desc: "Responsive weather forecast dashboard", img: "weather.svg", icon: "fas fa-cloud-sun", category: "Web Apps", tags: ["HTML", "CSS", "JavaScript"] },
+        { title: "Web Academy Platform", desc: "Courses, lessons and learning experience", img: "academy.svg", icon: "fas fa-graduation-cap", category: "Web Apps", tags: ["Laravel", "PHP", "Bootstrap"] }
     ];
 
-    // To add verification links later, replace only the empty url: 'https://coursera.org/verify/4TVFGAPIAPUQ' values below.
-    // All images are local files in the certificates/ directory.
+    // Each verification URL belongs to its matching certificate; update a URL here only when needed.
+    // All images are local files in the  directory.
     const certificates = [
-        { title: 'Responsive Website Basics: Code with HTML, CSS, and JavaScript', issuer: 'University of London · Goldsmiths · Coursera', image: 'certificates/university-of-london-responsive-web.jpg', url: 'https://coursera.org/verify/OH6NX5TMDFX1', category: 'Web Development', year: '2026', kind: 'Course Certificate' },
-        { title: 'Web Application Security', issuer: 'Microsoft · Coursera', image: 'certificates/microsoft-web-security.png', url: 'https://coursera.org/verify/0S9FE8QUS9M8', category: 'Cybersecurity', year: '2026', kind: 'Course Certificate' },
-        { title: 'Database Structures and Management with MySQL', issuer: 'Meta · Coursera', image: 'certificates/meta-mysql-database.png', url: 'https://coursera.org/verify/DHN7CE0QUT8N', category: 'Databases', year: '2026', kind: 'Course Certificate' },
-        { title: 'Project Management: Creating the WBS', issuer: 'Coursera Project Network', image: 'certificates/coursera-project-wbs.png', url: 'https://coursera.org/verify/ZZKIV96O1VCG', category: 'Project Management', year: '2026', kind: 'Project Certificate' },
-        { title: 'English for Career Development', issuer: 'University of Pennsylvania · Coursera', image: 'certificates/upenn-career-english.jpg', url: '', category: 'Professional Development', year: '2026', kind: 'Course Certificate' }
+        { title: 'Responsive Website Basics: Code with HTML, CSS, and JavaScript', issuer: 'University of London · Goldsmiths · Coursera', image: 'university-of-london-responsive-web.jpg', url: 'https://coursera.org/verify/4TVFGAPIAPUQ', category: 'Web Development', year: '2026', kind: 'Course Certificate' },
+        { title: 'Web Application Security', issuer: 'Microsoft · Coursera', image: 'microsoft-web-security.png', url: 'https://coursera.org/verify/OH6NX5TMDFX1', category: 'Cybersecurity', year: '2026', kind: 'Course Certificate' },
+        { title: 'Database Structures and Management with MySQL', issuer: 'Meta · Coursera', image: 'meta-mysql-database.png', url: 'https://coursera.org/verify/0S9FE8QUS9M8', category: 'Databases', year: '2026', kind: 'Course Certificate' },
+        { title: 'Project Management: Creating the WBS', issuer: 'Coursera Project Network', image: 'coursera-project-wbs.png', url: 'https://coursera.org/verify/DHN7CE0QUT8N', category: 'Project Management', year: '2026', kind: 'Project Certificate' },
+        { title: 'English for Career Development', issuer: 'University of Pennsylvania · Coursera', image: 'upenn-career-english.jpg', url: 'https://coursera.org/verify/ZZKIV96O1VCG', category: 'Professional Development', year: '2026', kind: 'Course Certificate' }
     ];
 
     const Portfolio = () => {
